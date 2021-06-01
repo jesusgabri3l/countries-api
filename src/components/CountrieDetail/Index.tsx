@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useHistory, useParams } from 'react-router-dom';
 import Loader from '../layouts/Loader';
 import CountrieInfo from './CountrieInfo';
-
+import NotFound from '../layouts/NotFound';
 
 export default function CountrieDetail() {
     let history = useHistory();
@@ -20,14 +20,14 @@ export default function CountrieDetail() {
                 setCountry(data);
                 setBorders(data.borders);
             } catch (e) {
-                console.log(e.response)
+                if(e.response.status === 404) setCountry(404);
             }
+            setLoading(false);
         }
         fetchCountry();
     }, [id])
 
     const setBorders = async (borders: any) => {
-        setLoading(false)
         if(borders.length === 0) return
 
         const bordersString = borders.join(';').toLocaleLowerCase();
@@ -35,12 +35,13 @@ export default function CountrieDetail() {
             const { data } = await axios(`https://restcountries.eu/rest/v2/alpha?codes=${bordersString}`);
             setBordersCountry(data);
         } catch (e) {
-            console.log(e.response)
+            console.log(e.response);
         }
     }
 
     const renderCountry = () => {
         if (!country) return 'Something went wrong...'
+        if(country === 404) return <NotFound></NotFound>
         return <CountrieInfo key = {country.alpha3Code} country={country} bordersCountry={bordersCountry}/>
     }
 
