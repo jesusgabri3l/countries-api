@@ -1,0 +1,18 @@
+.text{
+    @include p-m-reset;
+}
+.text--title{
+    font-size: 17px;
+    @media only screen and (min-width: $DESKTOP) {
+        font-size:25px;
+    }
+}
+
+.text--white{
+    color : $white;
+}
+
+.text--gray{
+    color : $gray;
+    margin-top: 10px;
+}

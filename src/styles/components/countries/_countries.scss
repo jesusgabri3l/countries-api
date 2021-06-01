@@ -1,0 +1,134 @@
+$space-grid: 65px;
+.allcountries {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: $space-grid;
+    column-gap: $space-grid;
+    margin-top: 60px;
+    padding-bottom: $space-grid;
+    @media only screen and (min-width: $TABLETS) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media only screen and (min-width: $DESKTOP) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.country {
+    width: 100%;
+    height: auto;
+    &__img {
+        width: 100%;
+        height: 170px;
+        object-fit: cover;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    &__img--detail {
+        border-radius: 0;
+        height: 200px;
+        @media only screen and (min-width: $TABLETS) {
+            height: 10%;
+            width: 50%;
+        }
+    }
+    &__info {
+        padding: 30px 15px;
+    }
+    &__title {
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+    }
+}
+.country--card {
+    background-color: $element-dark;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+}
+.country--flex {
+    display: flex;
+    flex-direction: column;
+    margin-top:15px;
+    @media only screen and (min-width: $TABLETS) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0;
+    }
+    @media only screen and (min-width: $DESKTOP) {
+        margin-top: 25px;
+    }
+    .country__info {
+        padding: 30px 15px;
+        @media only screen and (min-width: $TABLETS) {
+            width: 50%;
+            padding-left: 5rem;
+        }
+    }
+}
+
+.country-info {
+    margin-top: 15px;
+    display: flex;
+    letter-spacing: 0.5px;
+    font-size: 15px;
+    &__label {
+        font-weight: 600;
+        color: $white;
+        opacity: 0.9;
+        margin-right: 5px;
+    }
+
+    &__text {
+        color: $white;
+        opacity: 0.8;
+        font-weight: 300;
+        width : 100%;
+    }
+}
+.borders {
+    display: grid;
+    grid-template-columns: repeat(3, calc(33% - 15px));
+    column-gap: 15px;
+    row-gap: 15px;
+    margin-top: 20px;
+}
+.borderItem {
+    background-color: $element-dark;
+    width: 80px;
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: {
+        right: 10px;
+        left: 10px;
+    }
+    @media only screen and (min-width: $TABLETS) {
+        width: 80px;
+    }
+    @media only screen and (min-width: $DESKTOP) {
+        width: 120px;
+    }
+
+    &__text {
+        color: $white;
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+.flex-country-detail{
+    display: flex;
+    flex-direction: column;
+    @media only screen and (min-width: $DESKTOP) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}

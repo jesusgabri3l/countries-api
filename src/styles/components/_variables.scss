@@ -1,0 +1,26 @@
+@mixin padding-container(){
+    padding: {
+        right: 25px;
+        left: 25px;
+    };
+    @media only screen and (min-width: $DESKTOP) {
+        padding: {
+            right: 60px;
+            left: 60px;
+        };
+    }
+  }
+@mixin p-m-reset(){
+    margin: 0;
+    padding: 0;
+}
+
+//COLORS
+$background-dark: hsl(207, 26%, 17%);
+$element-dark : hsl(209, 23%, 22%);
+$white :hsl(0, 0%, 100%);
+$gray : #9e9e9e;
+
+//BREAK-POINTS
+$TABLETS : 767px;
+$DESKTOP : 1300px;

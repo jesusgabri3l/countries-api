@@ -1,0 +1,45 @@
+@import "components/variables";
+@import "components/typography/text";
+@import "components/typography/link";
+@import "components/button/button";
+@import "components/input/input";
+@import "components/loader";
+@import "components/header/header";
+@import "components/filters/filters";
+@import "components/filters/dropdown";
+@import "components/countries/countries";
+
+
+body{
+    padding: 0;
+    margin: 0;
+}
+ *{
+     font-family: 'Nunito Sans', 'sans-serif';
+     box-sizing: border-box;
+ }
+ .mr{
+     margin-right: 8px;
+ }
+ .mt{
+     margin-top: 40px;
+ }
+ .ml-md{
+    @media only screen and (max-width: $TABLETS) {
+        margin-left: 0;
+    }
+ }
+
+ .main-wrapper{
+     max-width: 100vw;
+     overflow-x: hidden;
+     background-color: $background-dark;
+     min-height: 100vh;
+ }
+ .container{
+     @include padding-container;
+     padding-top: 1.5rem;
+    @media only screen and (min-width: $DESKTOP) {
+        padding-top: 3rem;
+    }
+ }

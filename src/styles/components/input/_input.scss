@@ -1,0 +1,43 @@
+@mixin text-input {
+    color: $white;
+    opacity: 0.8;
+}
+.input {
+    outline: none;
+    border: none;
+}
+.input--search {
+    width: 100%;
+    background-color: $element-dark;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    @media only screen and (min-width: $DESKTOP) {
+        width : 40%;
+    }
+    &__input {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        width: 75%;
+        color: $white;
+        font-size: 13px;
+        &::placeholder {
+            @include text-input();
+        }
+
+        @media only screen and (min-width: $DESKTOP) {
+            font-size: 16px;
+        }
+    }
+    &__icon {
+        width: 20%;
+        padding-right: 0rem;
+        @include text-input();
+        @media only screen and (min-width: $DESKTOP) {
+            font-size: 16px;
+            width: 8%;
+        }
+        
+    }
+}
