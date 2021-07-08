@@ -43,11 +43,18 @@ export default function ListOfCountries({ keyword, region }: any) {
         )
     }
     const searchCountries = () => {
-        const countriesFiltered = countriesHelper.filter((country: any) => country.name.includes(keyword))
-        setCountries(countriesFiltered)
+        console.log(keyword)
+        if(keyword != ''){
+            const countriesFiltered = countriesHelper.filter((country: any) => country.name.includes(keyword))
+            setCountries(countriesFiltered)
+        }else{
+            console.log(keyword)
+            setCountries(countriesHelper)
+        }
     }
 
     const searchCountriesByRegion = () => {
+        if(region == 'all') return setCountries(countriesHelper)
         const countriesFiltered = countriesHelper.filter((country: any) => country.region == region)
         setCountries(countriesFiltered)
     }

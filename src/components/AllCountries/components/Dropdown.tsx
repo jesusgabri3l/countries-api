@@ -20,6 +20,14 @@ export default function Dropdown(props: any) {
         <ul className="dropdown__menu">
           <li
             className="dropdown__menu__item"
+            onClick={() => filterRegion("all")}
+          >
+            <a className="dropdown__menu__item__link" href="#">
+              All countries
+            </a>
+          </li>
+          <li
+            className="dropdown__menu__item"
             onClick={() => filterRegion("Africa")}
           >
             <a className="dropdown__menu__item__link" href="#">

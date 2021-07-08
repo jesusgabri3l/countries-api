@@ -5,8 +5,10 @@ import ListOfCountries from './ListOfCountries'
 
 
 export default function AllCountries() {
+
     const [keyword, setKeyword] = useState('')
     const [region, setRegion] = useState('')
+
     const searchInputHandler = (value: string) => {
         setKeyword(value)
         setRegion('')

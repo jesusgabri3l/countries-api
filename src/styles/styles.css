@@ -315,7 +315,7 @@
   list-style: none;
   padding: 0;
   width: 12rem;
-  height: 210px;
+  height: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -337,6 +337,8 @@
   transition: all 0.4s ease;
   -webkit-animation-duration: 3s;
           animation-duration: 3s;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 .dropdown__menu__item {
