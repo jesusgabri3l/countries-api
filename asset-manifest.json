@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/countries-api/static/css/main.9f226c1b.chunk.css",
-    "main.js": "/countries-api/static/js/main.0d8fca39.chunk.js",
-    "main.js.map": "/countries-api/static/js/main.0d8fca39.chunk.js.map",
-    "runtime-main.js": "/countries-api/static/js/runtime-main.70fee1ec.js",
-    "runtime-main.js.map": "/countries-api/static/js/runtime-main.70fee1ec.js.map",
-    "static/js/2.8f65e07f.chunk.js": "/countries-api/static/js/2.8f65e07f.chunk.js",
-    "static/js/2.8f65e07f.chunk.js.map": "/countries-api/static/js/2.8f65e07f.chunk.js.map",
-    "index.html": "/countries-api/index.html",
-    "static/css/main.9f226c1b.chunk.css.map": "/countries-api/static/css/main.9f226c1b.chunk.css.map",
-    "static/js/2.8f65e07f.chunk.js.LICENSE.txt": "/countries-api/static/js/2.8f65e07f.chunk.js.LICENSE.txt"
+    "main.css": "/jesusgabri3l/countries-api/static/css/main.9f226c1b.chunk.css",
+    "main.js": "/jesusgabri3l/countries-api/static/js/main.0d8fca39.chunk.js",
+    "main.js.map": "/jesusgabri3l/countries-api/static/js/main.0d8fca39.chunk.js.map",
+    "runtime-main.js": "/jesusgabri3l/countries-api/static/js/runtime-main.4b105099.js",
+    "runtime-main.js.map": "/jesusgabri3l/countries-api/static/js/runtime-main.4b105099.js.map",
+    "static/js/2.8f65e07f.chunk.js": "/jesusgabri3l/countries-api/static/js/2.8f65e07f.chunk.js",
+    "static/js/2.8f65e07f.chunk.js.map": "/jesusgabri3l/countries-api/static/js/2.8f65e07f.chunk.js.map",
+    "index.html": "/jesusgabri3l/countries-api/index.html",
+    "static/css/main.9f226c1b.chunk.css.map": "/jesusgabri3l/countries-api/static/css/main.9f226c1b.chunk.css.map",
+    "static/js/2.8f65e07f.chunk.js.LICENSE.txt": "/jesusgabri3l/countries-api/static/js/2.8f65e07f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.70fee1ec.js",
+    "static/js/runtime-main.4b105099.js",
     "static/js/2.8f65e07f.chunk.js",
     "static/css/main.9f226c1b.chunk.css",
     "static/js/main.0d8fca39.chunk.js"
