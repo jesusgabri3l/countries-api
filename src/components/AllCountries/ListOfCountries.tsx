@@ -6,14 +6,13 @@ import {CountriesContext} from '../CountriesProvider';
 
 export default function ListOfCountries({ keyword, region }: any) {
     const [countries, setCountries] = useContext(CountriesContext)
-
     const [countriesHelper, setCountriesHelper] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
 
         const fetchCountries = async () => {
-            const { data } = await axios('https://restcountries.eu/rest/v2/all')
+            const { data } = await axios('https://restcountries.com/v2/all')
             setCountries(data)
             setCountriesHelper(data)
             setLoading(false)
@@ -30,6 +29,7 @@ export default function ListOfCountries({ keyword, region }: any) {
 
     useEffect(() => {
         if(keyword) searchCountries()
+        else setCountries(countriesHelper)
     }, [keyword])
 
     useEffect( () => {
@@ -43,19 +43,17 @@ export default function ListOfCountries({ keyword, region }: any) {
         )
     }
     const searchCountries = () => {
-        console.log(keyword)
         if(keyword != ''){
             const countriesFiltered = countriesHelper.filter((country: any) => country.name.includes(keyword))
             setCountries(countriesFiltered)
         }else{
-            console.log(keyword)
             setCountries(countriesHelper)
         }
     }
 
     const searchCountriesByRegion = () => {
         if(region == 'all') return setCountries(countriesHelper)
-        const countriesFiltered = countriesHelper.filter((country: any) => country.region == region)
+        const countriesFiltered = countriesHelper.filter((country: any) => country.region === region)
         setCountries(countriesFiltered)
     }
 

@@ -16,11 +16,11 @@ export default function CountrieDetail() {
     useEffect(() => {
         const fetchCountry = async () => {
             try {
-                const { data } = await axios(`https://restcountries.eu/rest/v2/alpha/${id}`);
+                const { data } = await axios(`https://restcountries.com/v2/alpha/${id}`);
                 setCountry(data);
                 setBorders(data.borders);
             } catch (e) {
-                if(e.response.status === 404) setCountry(404);
+                if(e) setCountry(404);
             }
             setLoading(false);
         }
@@ -28,14 +28,14 @@ export default function CountrieDetail() {
     }, [id])
 
     const setBorders = async (borders: any) => {
-        if(borders.length === 0) return
-
-        const bordersString = borders.join(';').toLocaleLowerCase();
+        if(!borders || borders.length === 0) return
+        const bordersString = borders.join(',').toLocaleLowerCase();
+        console.log(bordersString)
         try {
-            const { data } = await axios(`https://restcountries.eu/rest/v2/alpha?codes=${bordersString}`);
+            const { data } = await axios(`https://restcountries.com/v2/alpha?codes=${bordersString}`);
             setBordersCountry(data);
         } catch (e) {
-            console.log(e.response);
+            console.log(e);
         }
     }
 

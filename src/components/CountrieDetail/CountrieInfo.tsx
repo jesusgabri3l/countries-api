@@ -37,7 +37,7 @@ export default function CountrieInfo(props: any) {
                 <div className="country-borders">
                     <label className="text text--white">Border countries :</label>
                     {
-                        bordersCountry.length === 0
+                        !bordersCountry || bordersCountry.length === 0
                             ? <p className="text text--gray">Looks likes this country does not have borders</p>
                             : <div className="borders">
                                 {renderBorders()}
