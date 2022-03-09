@@ -30,10 +30,12 @@ export default function ListOfCountries({ keyword, region }: any) {
     useEffect(() => {
         if(keyword) searchCountries()
         else setCountries(countriesHelper)
+        // eslint-disable-next-line
     }, [keyword])
 
     useEffect( () => {
         if(region) searchCountriesByRegion();
+        // eslint-disable-next-line
     }, [region])
 
     const renderCountries = () => {
@@ -43,7 +45,7 @@ export default function ListOfCountries({ keyword, region }: any) {
         )
     }
     const searchCountries = () => {
-        if(keyword != ''){
+        if(keyword !== ''){
             const countriesFiltered = countriesHelper.filter((country: any) => country.name.includes(keyword))
             setCountries(countriesFiltered)
         }else{
@@ -52,7 +54,7 @@ export default function ListOfCountries({ keyword, region }: any) {
     }
 
     const searchCountriesByRegion = () => {
-        if(region == 'all') return setCountries(countriesHelper)
+        if(region === 'all') return setCountries(countriesHelper)
         const countriesFiltered = countriesHelper.filter((country: any) => country.region === region)
         setCountries(countriesFiltered)
     }

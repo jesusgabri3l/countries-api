@@ -22,47 +22,47 @@ export default function Dropdown(props: any) {
             className="dropdown__menu__item"
             onClick={() => filterRegion("all")}
           >
-            <a className="dropdown__menu__item__link" href="#">
+            <span className="dropdown__menu__item__link" >
               All countries
-            </a>
+            </span>
           </li>
           <li
             className="dropdown__menu__item"
             onClick={() => filterRegion("Africa")}
           >
-            <a className="dropdown__menu__item__link" href="#">
+            <span className="dropdown__menu__item__link">
               Africa
-            </a>
+            </span>
           </li>
           <li
             className="dropdown__menu__item"
             onClick={() => filterRegion("Americas")}
           >
-            <a className="dropdown__menu__item__link" href="#">
+            <span className="dropdown__menu__item__link">
               America
-            </a>
+            </span>
           </li>
           <li
             className="dropdown__menu__item"
             onClick={() => filterRegion("Asia")}
           >
-            <a className="dropdown__menu__item__link">Asia</a>
+            <span className="dropdown__menu__item__link">Asia</span>
           </li>
           <li
             className="dropdown__menu__item"
             onClick={() => filterRegion("Europe")}
           >
-            <a className="dropdown__menu__item__link" href="#">
+            <span className="dropdown__menu__item__link">
               Europe
-            </a>
+            </span>
           </li>
           <li
             className="dropdown__menu__item"
             onClick={() => filterRegion("Oceania")}
           >
-            <a className="dropdown__menu__item__link" href="#">
+            <span className="dropdown__menu__item__link" >
               Oceania
-            </a>
+            </span>
           </li>
         </ul>
       ) : (
