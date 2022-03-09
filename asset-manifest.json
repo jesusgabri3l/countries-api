@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/jesusgabri3l/countries-api/static/css/main.9f226c1b.chunk.css",
+    "main.css": "/jesusgabri3l/countries-api/static/css/main.b5132074.chunk.css",
     "main.js": "/jesusgabri3l/countries-api/static/js/main.0f914ba0.chunk.js",
     "main.js.map": "/jesusgabri3l/countries-api/static/js/main.0f914ba0.chunk.js.map",
     "runtime-main.js": "/jesusgabri3l/countries-api/static/js/runtime-main.4b105099.js",
@@ -8,13 +8,13 @@
     "static/js/2.8f65e07f.chunk.js": "/jesusgabri3l/countries-api/static/js/2.8f65e07f.chunk.js",
     "static/js/2.8f65e07f.chunk.js.map": "/jesusgabri3l/countries-api/static/js/2.8f65e07f.chunk.js.map",
     "index.html": "/jesusgabri3l/countries-api/index.html",
-    "static/css/main.9f226c1b.chunk.css.map": "/jesusgabri3l/countries-api/static/css/main.9f226c1b.chunk.css.map",
+    "static/css/main.b5132074.chunk.css.map": "/jesusgabri3l/countries-api/static/css/main.b5132074.chunk.css.map",
     "static/js/2.8f65e07f.chunk.js.LICENSE.txt": "/jesusgabri3l/countries-api/static/js/2.8f65e07f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4b105099.js",
     "static/js/2.8f65e07f.chunk.js",
-    "static/css/main.9f226c1b.chunk.css",
+    "static/css/main.b5132074.chunk.css",
     "static/js/main.0f914ba0.chunk.js"
   ]
 }
