@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function Dropdown(props: any) {
-  const { filterRegionHandler } = props;
+  const { filterRegionHandler, region } = props;
   const [open, setOpen] = useState(false);
 
   const filterRegion = (region: string) => {
@@ -13,7 +13,7 @@ export default function Dropdown(props: any) {
   return (
     <div className="dropdown">
       <button className="button dropdown__button" onClick={() => setOpen(!open)}>
-        <span>Filter by regions</span>
+        <span>{region === 'all' || region === '' ? 'All countries' : region}</span>
         <i className={open ? 'fa fa-angle-down up' : 'fa fa-angle-down down'}></i>
       </button>
       {open ? (

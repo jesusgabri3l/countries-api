@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import Filters from './Filters'
 import ListOfCountries from './ListOfCountries'
 
-
 export default function AllCountries() {
 
     const [keyword, setKeyword] = useState('')
@@ -20,7 +19,7 @@ export default function AllCountries() {
     return (
         <main>
             <section className="container">
-                <Filters searchHandler = {searchInputHandler} filterRegionHandler = {filterRegionHandler}/>
+                <Filters searchHandler = {searchInputHandler} filterRegionHandler = {filterRegionHandler} region={region}/>
                 <ListOfCountries keyword = {keyword} region = {region}/>
             </section>
         </main>
