@@ -9,10 +9,10 @@
 }
 
 .text--white{
-    color : $white;
+    color : var(--color-text);
 }
 
 .text--gray{
-    color : $gray;
+    color : var(--color-text-muted);
     margin-top: 10px;
 }

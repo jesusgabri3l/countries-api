@@ -1,5 +1,5 @@
 @mixin text-input {
-    color: $white;
+    color: var(--color-text-muted);
     opacity: 0.8;
 }
 .input {
@@ -7,20 +7,25 @@
     border: none;
 }
 .input--search {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     width: 100%;
-    background-color: $element-dark;
+    background-color: var(--color-element-bg);
     padding: 0.75rem 1.5rem;
     border-radius: 5px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 6px var(--color-shadow);
+    transition: background-color 0.3s ease;
     @media only screen and (min-width: $DESKTOP) {
         width : 40%;
     }
     &__input {
+        flex: 1;
+        min-width: 0;
         background-color: transparent;
         outline: none;
         border: none;
-        width: 75%;
-        color: $white;
+        color: var(--color-text);
         font-size: 13px;
         &::placeholder {
             @include text-input();
@@ -31,13 +36,10 @@
         }
     }
     &__icon {
-        width: 20%;
-        padding-right: 0rem;
+        flex-shrink: 0;
         @include text-input();
         @media only screen and (min-width: $DESKTOP) {
             font-size: 16px;
-            width: 8%;
         }
-        
     }
 }

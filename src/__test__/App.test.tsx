@@ -18,7 +18,7 @@ describe('App', () => {
     render(<App />);
     await screen.findByText('Colombia');
 
-    await user.type(screen.getByPlaceholderText('Search for country...'), 'japan');
+    await user.type(screen.getByPlaceholderText('Search for a country...'), 'japan');
 
     expect(screen.getByText('Japan')).toBeInTheDocument();
     expect(screen.queryByText('Colombia')).not.toBeInTheDocument();

@@ -15,11 +15,36 @@
     padding: 0;
 }
 
-//COLORS
-$background-dark: hsl(207, 26%, 17%);
-$element-dark : hsl(209, 23%, 22%);
-$white :hsl(0, 0%, 100%);
-$gray : #9e9e9e;
+//THEME TOKENS (Frontend Mentor "Where in the world?" style guide)
+:root {
+    --color-bg: hsl(0, 0%, 98%);
+    --color-element-bg: hsl(0, 0%, 100%);
+    --color-text: hsl(200, 15%, 8%);
+    --color-text-muted: hsl(0, 0%, 52%);
+    --color-border: hsl(0, 0%, 88%);
+    --color-shadow: rgba(0, 0, 0, 0.08);
+    --color-focus: hsl(210, 100%, 56%);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        --color-bg: hsl(207, 26%, 17%);
+        --color-element-bg: hsl(209, 23%, 22%);
+        --color-text: hsl(0, 0%, 100%);
+        --color-text-muted: hsl(0, 0%, 100%);
+        --color-border: hsl(209, 23%, 30%);
+        --color-shadow: rgba(0, 0, 0, 0.24);
+    }
+}
+
+[data-theme='dark'] {
+    --color-bg: hsl(207, 26%, 17%);
+    --color-element-bg: hsl(209, 23%, 22%);
+    --color-text: hsl(0, 0%, 100%);
+    --color-text-muted: hsl(0, 0%, 100%);
+    --color-border: hsl(209, 23%, 30%);
+    --color-shadow: rgba(0, 0, 0, 0.24);
+}
 
 //BREAK-POINTS
 $TABLETS : 767px;

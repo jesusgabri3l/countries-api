@@ -24,7 +24,7 @@ export default function CountrieDetail() {
   return (
     <section className="container">
       <button className="button button--dark" onClick={() => navigate(-1)}>
-        <i className="fa fa-angle-left mr"></i>
+        <i className="fa fa-angle-left mr" aria-hidden="true"></i>
         Back
       </button>
       {loading ? (

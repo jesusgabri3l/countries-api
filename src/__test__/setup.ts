@@ -6,6 +6,16 @@ import { afterAll, afterEach, beforeAll } from 'vitest';
 
 import { RawCountriesResponse } from './mocks/countries';
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener: function () {},
+      removeListener: function () {},
+    };
+  };
+
 export const restHandlers = [
   http.get('https://cdn.jsdelivr.net/gh/mledoze/countries@master/dist/countries.json', () => {
     return HttpResponse.json(RawCountriesResponse);

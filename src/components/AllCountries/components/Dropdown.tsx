@@ -1,72 +1,66 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
-export default function Dropdown(props: any) {
-  const { filterRegionHandler, region } = props;
+import { useClickOutside } from '../../../hooks/useClickOutside';
+
+const REGIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+
+export default function Dropdown({
+  filterRegionHandler,
+  region,
+}: {
+  filterRegionHandler: (region: string) => void;
+  region: string;
+}) {
   const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  useClickOutside(containerRef, () => setOpen(false));
 
-  const filterRegion = (region: string) => {
-    if (!region) return;
-    filterRegionHandler(region);
+  const filterRegion = (value: string) => {
+    if (!value) return;
+    filterRegionHandler(value);
     setOpen(false);
   };
 
   return (
-    <div className="dropdown">
-      <button className="button dropdown__button" onClick={() => setOpen(!open)}>
-        <span>{region === 'all' || region === '' ? 'All countries' : region}</span>
-        <i className={open ? 'fa fa-angle-down up' : 'fa fa-angle-down down'}></i>
+    <div className="dropdown" ref={containerRef}>
+      <button
+        type="button"
+        className="dropdown__button"
+        onClick={() => setOpen(!open)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
+        <span>{region === 'all' || region === '' ? 'Filter by Region' : region}</span>
+        <i className={open ? 'fa fa-angle-down up' : 'fa fa-angle-down down'} aria-hidden="true"></i>
       </button>
-      {open ? (
-        <ul className="dropdown__menu">
-          <li
-            className="dropdown__menu__item"
-            onClick={() => filterRegion("all")}
-          >
-            <span className="dropdown__menu__item__link" >
+      {open && (
+        <ul className="dropdown__menu" role="listbox">
+          <li className="dropdown__menu__item" role="option" aria-selected={region === 'all' || region === ''}>
+            <button
+              type="button"
+              className="dropdown__menu__item__link"
+              onClick={() => filterRegion('all')}
+            >
               All countries
-            </span>
+            </button>
           </li>
-          <li
-            className="dropdown__menu__item"
-            onClick={() => filterRegion("Africa")}
-          >
-            <span className="dropdown__menu__item__link">
-              Africa
-            </span>
-          </li>
-          <li
-            className="dropdown__menu__item"
-            onClick={() => filterRegion("Americas")}
-          >
-            <span className="dropdown__menu__item__link">
-              America
-            </span>
-          </li>
-          <li
-            className="dropdown__menu__item"
-            onClick={() => filterRegion("Asia")}
-          >
-            <span className="dropdown__menu__item__link">Asia</span>
-          </li>
-          <li
-            className="dropdown__menu__item"
-            onClick={() => filterRegion("Europe")}
-          >
-            <span className="dropdown__menu__item__link">
-              Europe
-            </span>
-          </li>
-          <li
-            className="dropdown__menu__item"
-            onClick={() => filterRegion("Oceania")}
-          >
-            <span className="dropdown__menu__item__link" >
-              Oceania
-            </span>
-          </li>
+          {REGIONS.map((option) => (
+            <li
+              key={option}
+              className="dropdown__menu__item"
+              role="option"
+              aria-selected={region === option}
+            >
+              <button
+                type="button"
+                className="dropdown__menu__item__link"
+                onClick={() => filterRegion(option)}
+              >
+                {option}
+              </button>
+            </li>
+          ))}
         </ul>
-      ) : (
-        ""
       )}
     </div>
   );

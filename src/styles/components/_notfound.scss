@@ -7,7 +7,7 @@
     justify-content:center;
     &__text{
         text-align: center;
-        color : $white;
+        color : var(--color-text);
     }
     &__icon{
         color : #f39c12;

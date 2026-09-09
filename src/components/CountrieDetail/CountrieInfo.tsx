@@ -34,7 +34,7 @@ export default function CountrieInfo({ country, bordersCountry }: Props) {
           ) : (
             <div className="borders">
               {bordersCountry.map((border) => (
-                <BorderItem key={border.alpha3Code} name={border.name} />
+                <BorderItem key={border.alpha3Code} name={border.name} code={border.alpha3Code} />
               ))}
             </div>
           )}

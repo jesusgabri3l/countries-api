@@ -1,20 +1,23 @@
 .button{
     min-width: 5rem;
+    min-height: 44px;
     padding: .5rem 1.25rem;
     outline: none;
     border: none;
     cursor: pointer;
+    font: inherit;
 }
 .button--invisible{
     background-color: transparent;
     padding: 0 1.25rem;
-    color : $white;
+    color : var(--color-text);
     font-size: 13px;
 }
 .button--dark{
-    background-color: $element-dark;
-    color : $white;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    background-color: var(--color-element-bg);
+    color : var(--color-text);
+    box-shadow: 0 3px 6px var(--color-shadow);
     border-radius: 5px;
     min-width: 8rem;
+    transition: background-color 0.3s ease;
 }
