@@ -1,18 +1,18 @@
-import * as React from "react";
-import { useHistory } from "react-router-dom";
-import LabelText from "../../Helpers/LabelText";
+import { useNavigate } from 'react-router-dom';
+
+import type { Country as CountryModel } from '../../../services/countries';
+import LabelText from '../../Helpers/LabelText';
+
 interface IProps {
-  country: any;
+  country: CountryModel;
 }
 
 export default function Country({ country }: IProps) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const goToRouteDetail = (code: string): void | boolean => {
-    if (!code) return false;
-
-    const codeMin = code.toLocaleLowerCase();
-    history.push(`/${codeMin}`);
+  const goToRouteDetail = (code: string): void => {
+    if (!code) return;
+    navigate(`/${code.toLowerCase()}`);
   };
 
   return (
@@ -25,7 +25,6 @@ export default function Country({ country }: IProps) {
         <h3 className="text text--white text--title country__title">
           {country.name}
         </h3>
-        <LabelText label="Population" text={country.population} />
         <LabelText label="Region" text={country.region} />
         <LabelText label="Capital" text={country.capital} />
       </section>

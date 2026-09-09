@@ -1,61 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useHistory, useParams } from 'react-router-dom';
+import { useContext, useMemo } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import { CountriesContext } from '../CountriesProvider';
 import Loader from '../layouts/Loader';
-import CountrieInfo from './CountrieInfo';
 import NotFound from '../layouts/NotFound';
+import CountrieInfo from './CountrieInfo';
 
 export default function CountrieDetail() {
-    let history = useHistory();
-    const { id }: any = useParams();
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { countries, loading, error } = useContext(CountriesContext);
 
-    const [loading, setLoading] = useState(true)
-    const [country, setCountry]: any = useState({});
-    const [bordersCountry, setBordersCountry]: any = useState([]);
+  const country = useMemo(
+    () => countries.find((item) => item.alpha3Code.toLowerCase() === id?.toLowerCase()),
+    [countries, id],
+  );
 
-    useEffect(() => {
-        const fetchCountry = async () => {
-            try {
-                const { data } = await axios(`https://restcountries.com/v2/alpha/${id}`);
-                setCountry(data);
-                setBorders(data.borders);
-            } catch (e) {
-                if(e) setCountry(404);
-            }
-            setLoading(false);
-        }
-        fetchCountry();
-    }, [id])
+  const bordersCountry = useMemo(() => {
+    if (!country) return [];
+    return countries.filter((item) => country.borders.includes(item.alpha3Code));
+  }, [countries, country]);
 
-    const setBorders = async (borders: any) => {
-        if(!borders || borders.length === 0) return
-        const bordersString = borders.join(',').toLocaleLowerCase();
-        console.log(bordersString)
-        try {
-            const { data } = await axios(`https://restcountries.com/v2/alpha?codes=${bordersString}`);
-            setBordersCountry(data);
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    const renderCountry = () => {
-        if (!country) return 'Something went wrong...'
-        if(country === 404) return <NotFound></NotFound>
-        return <CountrieInfo key = {country.alpha3Code} country={country} bordersCountry={bordersCountry}/>
-    }
-
-    return (
-        <section className="container">
-            <button className="button button--dark" onClick={() => history.goBack()}>
-                <i className="fa fa-angle-left mr"></i>
-                Back
-            </button>
-            {
-                loading
-                    ? <Loader />
-                    : renderCountry()
-            }
-        </section>
-    )
+  return (
+    <section className="container">
+      <button className="button button--dark" onClick={() => navigate(-1)}>
+        <i className="fa fa-angle-left mr"></i>
+        Back
+      </button>
+      {loading ? (
+        <Loader />
+      ) : error || !country ? (
+        <NotFound />
+      ) : (
+        <CountrieInfo country={country} bordersCountry={bordersCountry} />
+      )}
+    </section>
+  );
 }

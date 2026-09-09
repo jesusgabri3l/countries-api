@@ -1,0 +1,40 @@
+import type { RawCountry } from '../../services/countries';
+
+export const RawCountriesResponse: RawCountry[] = [
+  {
+    name: { common: 'Colombia', native: { spa: { common: 'Colombia' } } },
+    tld: ['.co'],
+    cca2: 'CO',
+    cca3: 'COL',
+    capital: ['Bogotá'],
+    region: 'Americas',
+    subregion: 'South America',
+    currencies: { COP: { name: 'Colombian peso' } },
+    languages: { spa: 'Spanish' },
+    borders: ['VEN'],
+  },
+  {
+    name: { common: 'Venezuela', native: { spa: { common: 'Venezuela' } } },
+    tld: ['.ve'],
+    cca2: 'VE',
+    cca3: 'VEN',
+    capital: ['Caracas'],
+    region: 'Americas',
+    subregion: 'South America',
+    currencies: { VES: { name: 'Venezuelan bolívar' } },
+    languages: { spa: 'Spanish' },
+    borders: ['COL'],
+  },
+  {
+    name: { common: 'Japan', native: { jpn: { common: '日本' } } },
+    tld: ['.jp'],
+    cca2: 'JP',
+    cca3: 'JPN',
+    capital: ['Tokyo'],
+    region: 'Asia',
+    subregion: 'Eastern Asia',
+    currencies: { JPY: { name: 'Japanese yen' } },
+    languages: { jpn: 'Japanese' },
+    borders: [],
+  },
+];

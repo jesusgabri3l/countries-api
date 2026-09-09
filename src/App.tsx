@@ -1,16 +1,22 @@
-import React from 'react';
-import './styles/styles.css';
+import './styles/styles.scss';
 
-import Navbar from './components/layouts/Navbar'
+import { HashRouter as Router } from 'react-router-dom';
+
+import CountriesProvider from './components/CountriesProvider';
+import Navbar from './components/layouts/Navbar';
 import RouterHelper from './components/layouts/RouterHelper';
 
 function App() {
-    return (
+  return (
+    <CountriesProvider>
+      <Router>
         <section className="main-wrapper">
-            <Navbar />
-            <RouterHelper/>
+          <Navbar />
+          <RouterHelper />
         </section>
-    );
+      </Router>
+    </CountriesProvider>
+  );
 }
 
 export default App;

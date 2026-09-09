@@ -1,77 +1,32 @@
-import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-import Countrie from './components/Country'
-import Loader from '../layouts/Loader'
-import {CountriesContext} from '../CountriesProvider';
+import { useContext, useMemo } from 'react';
 
-export default function ListOfCountries({ keyword, region }: any) {
-    const [countries, setCountries] = useContext(CountriesContext)
-    const [countriesHelper, setCountriesHelper] = useState([])
-    const [loading, setLoading] = useState(true)
+import { CountriesContext } from '../CountriesProvider';
+import Countrie from './components/Country';
+import Loader from '../layouts/Loader';
 
-    useEffect(() => {
+export default function ListOfCountries({ keyword, region }: { keyword: string; region: string }) {
+  const { countries, loading, error } = useContext(CountriesContext);
 
-        const fetchCountries = async () => {
-            const { data } = await axios('https://restcountries.com/v2/all')
-            setCountries(data)
-            setCountriesHelper(data)
-            setLoading(false)
-        }
-
-        fetchCountries()
-        // eslint-disable-next-line
-    }, [])
-
-    useEffect(() => {
-        renderCountries()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    useEffect(() => {
-        if(keyword) searchCountries()
-        else setCountries(countriesHelper)
-        // eslint-disable-next-line
-    }, [keyword])
-
-    useEffect( () => {
-        if(region) searchCountriesByRegion();
-        // eslint-disable-next-line
-    }, [region])
-
-    const renderCountries = () => {
-        return countries.map((country :any, index: number) =>
-            <Countrie key={index}
-                country={country} />
-        )
+  const filteredCountries = useMemo(() => {
+    if (keyword) {
+      return countries.filter((country) =>
+        country.name.toLowerCase().includes(keyword.toLowerCase()),
+      );
     }
-    const searchCountries = () => {
-        if(keyword !== ''){
-            const countriesFiltered = countriesHelper.filter((country: any) => country.name.includes(keyword))
-            setCountries(countriesFiltered)
-        }else{
-            setCountries(countriesHelper)
-        }
+    if (region && region !== 'all') {
+      return countries.filter((country) => country.region === region);
     }
+    return countries;
+  }, [countries, keyword, region]);
 
-    const searchCountriesByRegion = () => {
-        if(region === 'all') return setCountries(countriesHelper)
-        const countriesFiltered = countriesHelper.filter((country: any) => country.region === region)
-        setCountries(countriesFiltered)
-    }
+  if (error) return <p className="text text--white">Could not load the countries list.</p>;
+  if (loading) return <Loader />;
 
-    return (
-        <div>
-            {
-                loading
-                    ? <Loader />
-                    : <section className="allcountries">
-                        {renderCountries()}
-                    </section>
-            }
-        </div>
-    )
-
-
-
-
+  return (
+    <section className="allcountries">
+      {filteredCountries.map((country) => (
+        <Countrie key={country.alpha3Code} country={country} />
+      ))}
+    </section>
+  );
 }
